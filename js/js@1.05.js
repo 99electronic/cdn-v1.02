@@ -260,9 +260,9 @@ function gotoURL(url, cache, vars, blank, return_url_only) {
     if ($.isFunction(url)) {
         url();
     } else {
-    if(url.substring(0, 8) == 'https://' || url.substring(0, 7) == 'http://') {
-        window.location.href = url;
-    } else {
+        if(url.substring(0, 8) == 'https://' || url.substring(0, 7) == 'http://') {
+            window.location.href = url;
+        } else {
             if (!vars) {
                 vars = '';
             }
@@ -348,10 +348,10 @@ jQuery(function($) {
 });
 
 var APIurl =function(queryObj) {
-        queryObj.timestamp = jQuery.now();
-        queryObj.platform = 'www';
-        var querystr = b64EncodeUnicode(JSON.stringify(queryObj));
-        var url = api + '?query=' + querystr + '&json=json';
+    queryObj.timestamp = jQuery.now();
+    queryObj.platform = 'www';
+    var querystr = b64EncodeUnicode(JSON.stringify(queryObj));
+    var url = api + '?query=' + querystr + '&json=json';
     return url;
 }
 
@@ -406,9 +406,9 @@ function print_r(data) {
 function errormodal(e, header, fn) {
     if(Array.isArray(e)) {
         var error = '';
-            $.each(e, function(key){
-                error += errcolor(e[key]) + '<br>';
-            });
+        $.each(e, function(key){
+            error += errcolor(e[key]) + '<br>';
+        });
         e = error;
     } else {
         e = errcolor(e);
@@ -470,7 +470,7 @@ function page_loading(action, back_button_icon, back_button_text, back_button_fu
         if(back_button_function) {
             $('#wrapper-back-button').on("click", back_button_function)
                 .html('<span class="fa '+back_button_icon+'">' +
-                '</span>'+back_button_text);
+                    '</span>'+back_button_text);
         }
         $('#loaded-container').hide();
         $('#loader').show();
